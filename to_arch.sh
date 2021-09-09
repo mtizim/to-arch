@@ -2,13 +2,18 @@
 #some env stuff for more support
 # https://www.gnu.org/licenses/old-licenses/gpl-2.0.html, from mariuszkurek/convert.sh
 #I personally wanted to use the MIT or BSD-2 clause to not get sued, but the original one uses gpl2
-
+if [ $EUID -eq 0 ]; then
+	if [ "$(pacman -Qq | grep kde-plasma-desktop)" ]; then
+		printf "This script should not be run as root since KDE Plasma stores its settings in the normal userspace.\nPermissions will be eleveted automatically for system-wide tasks."
+		exit 1
+	fi
+fi
 printf "I HAVE ABSOLUTELY NO RESPONSIBILITY FOR ANY ERRORS!\nPLEASE IGNORE WARNINGS!\n"
 printf "This script only works on UEFI systems on an IPv4 network!\nDO NOT RUN THIS SCRIPT IF YOU ARE USING BIOS or IPv6!\n"
-printf "====>The PACUI BMENU NOT FOUND ERROR IS A PACMAN BUG AND IS COMPLETELY HARMLESS! IGNORE AND DON\'T ASK ME WHY!<====\n"
 read -rp "==>Press Enter to continue"
 
-cat >/tmp/convert.sh <<EOF
+##/dev/null part is to mute meaningless stderr caused by cat's vulnerability
+cat >/tmp/convert.sh 2>/dev/null <<EOF
 ##I think most editions have screenfetch preinstalled, not neofetch, so I added a screenfetch line even though I prefer neofetch
 if [ "$(pacman -Qq | grep screenfetch)" ]; then
 	screenfetch
