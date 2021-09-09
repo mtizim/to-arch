@@ -45,7 +45,8 @@ if [ "$(pacman -Qq | grep manjaro-keyring)" ]; then
 fi
 
 #Some more seamless stuff
-directory="$(pwd)"
+p_w_d="$(directory)"
+
 cd /etc/pacman.d
 
 #Get mirrorlist
@@ -104,6 +105,8 @@ sed -ie 's/#\(\[multilib\]\)/\1/;/\[multilib\]/,/^$/{//!s/^#//;}' /etc/pacman.co
 sed -i '/HoldPkg/d' /etc/pacman.conf
 #purge manjaro's software
 pacman -Qq | grep manjaro | xargs pacman -Rdd --noconfirm
+#KDE Plasma
+pacman -Qq | grep breath | xargs pacman -Rdd --noconfirm
 
 #This should be in front of -Syu to avoid manjaro's linux kernel from updating
 pacman -Qq | grep linux[0-9] | xargs pacman -Rdd --noconfirm
@@ -152,6 +155,7 @@ if [ -f /etc/locale.conf.pacsave ]; then
 fi
 locale-gen
 
+
 #Deletes Manjaro-Sway repo
 if [ "$(pacman -Qq | grep sway)" ]; then
 	sed -ie '/[manjaro-sway]/,+2d' /etc/pacman.conf
@@ -170,9 +174,12 @@ fi
 #I like neofetch better than screenfetch since it shows the terminal info, but for your crappy network's sake I used screenfetch as it's preinstalled in many editions
 screenfetch
 printf "Now it\'s Arch! Enjoy!\n"
-printf "There could be some leftover manjaro backgrounds and settings(especially lightdm),\nso you might have to tweak your desktop environment a bit.\n"
+printf "There could be some leftover Manjaro backgrounds and themes/settings(especially lightdm),\nso you might have to tweak your desktop environment a bit.\n"
 if [ "$(pacman -Q | grep deepin-desktop-base)" ]; then
 	printf "When you reboot, the theme will be changed to stock white but the font won\'t,\nso change it to dark again and it\'ll be fixed..\nAnd especially on VMs after login everything will be white.\nBlindly press on the middle of the screen and you\'ll be logged in.\n"
+fi
+if [ "$(systemctl list-unit-files | grep enabled | grep sddm)" ]; then
+	printf "You seem to run SDDM.\nMake sure you change the SDDM theme to something else like breeze because the default theme looks horrible!"
 fi
 EOF
 
@@ -181,4 +188,10 @@ EOF
 
 chmod +x /tmp/convert.sh
 sudo /tmp/convert.sh
+#KDE Plasma theme switch to default(User mode)
+if [ "$(pacman -Qq | grep kde-plasma-desktop)" ]; then
+	/usr/lib/plasma-changeicons breeze-dark 2>/dev/null
+	lookandfeeltool --apply "org.kde.breezedark.desktop" 2>/dev/null
+fi
+
 rm /tmp/convert.sh
