@@ -32,4 +32,6 @@ The screen goes gray after rebooting after running this script.<br>As far as I h
 
 - [ ] Manjaro Sway community edition support
 
+- [ ] Ask which kernel version is to be installed
+
 
