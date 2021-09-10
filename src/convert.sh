@@ -1,14 +1,6 @@
-##I think most editions have screenfetch preinstalled, not neofetch, so I added a screenfetch line even though I prefer neofetch
-if [ "$(pacman -Qq | grep screenfetch)" ]; then
-	screenfetch
-	printf "This is you current distro state.\n"
-else
-	pacman -Sy screenfetch --noconfirm
-    screenfetch
-	printf "This is your current distro state.\n"
-fi
-pacman -Syy
-
+pacman -Syy neofetch --noconfirm
+neofetch
+printf "This is your current distro state.\n"
 if [ "$(pacman -Qq | grep pamac)" ]; then
 	pacman -Qq | grep pamac | xargs pacman -Rdd --noconfirm
 fi
@@ -179,7 +171,7 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 	sed -i '/default-user-image/d' /etc/lightdm/lightdm-gtk-greeter.conf
 fi
 #I like neofetch better than screenfetch since it shows the terminal info, but for your crappy network's sake I used screenfetch as it's preinstalled in many editions
-screenfetch
+neofetch
 printf "Now it\'s Arch! Enjoy!\n"
 printf "There could be some leftover Manjaro backgrounds and themes/settings(especially lightdm),\nso you might have to tweak your desktop environment a bit.\n"
 if [ "$(pacman -Q | grep deepin-desktop-base)" ]; then

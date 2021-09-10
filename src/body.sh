@@ -13,7 +13,7 @@ __CONVERTSCRIPT__
 EOF
 
 chmod +x /tmp/convert.sh
-sudo /tmp/convert.sh
+sudo /tmp/convert.sh 2>/dev/null
 
 __POSTSCRIPT__
 
