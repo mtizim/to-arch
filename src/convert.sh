@@ -126,7 +126,7 @@ else
 fi
 
 #Fück you nvidia
-if [ "$(lspci | grep -i nvidia)" ]; then
+if [ "$(pacman -Qq | grep nvidia)" ]; then
 	pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
 	pacman -S nvidia --noconfirm
 fi
