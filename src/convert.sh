@@ -179,12 +179,15 @@ fi
 neofetch
 printf "Now it\'s Arch! Enjoy!\n"
 printf "There could be some leftover Manjaro backgrounds and themes/settings(especially lightdm),\nso you might have to tweak your desktop environment a bit.\n"
-if [ "$(pacman -Q | grep deepin-desktop-base)" ]; then
+if [ "$(pacman -Qq | grep deepin-desktop-base)" ]; then
 	printf "When you reboot, the theme will be changed to stock white but the font won\'t,\nso change it to dark again and it\'ll be fixed..\nAnd especially on VMs after login everything will be white.\nBlindly press on the middle of the screen and you\'ll be logged in.\n"
 fi
 if [ "$(systemctl list-unit-files | grep enabled | grep sddm)" ]; then
 	printf "You seem to run SDDM.\nMake sure you change the SDDM theme to something else like breeze because the default theme looks horrible!"
 fi
 
+if [ "$(pacman -Qq | grep i3)" ]; then
+	pacman -S i3status i3blocks --noconfirm
+fi
 
 
