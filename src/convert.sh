@@ -45,8 +45,15 @@ fi
 sed -i '/SyncFirst/d' /etc/pacman.conf
 sed -i '/HoldPkg/d' /etc/pacman.conf
 
-printf "==> Uncomment mirrors from your country.\n"
-${EDITOR} /etc/pacman.d/mirrorlist
+printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, 3 for vi, or anything else for your default editor.\n"
+#end of file enclosure read error workaround
+read -n 1 number && echo ${number} >/tmp/choice
+case "$(cat /tmp/choice)" in
+	"1") nano /etc/pacman.d/mirrorlist ;;
+	"2") vim /etc/pacman.d/mirrorlist ;;
+	"3") vi /etc/pacman.d/mirrorlist ;;
+	*) "${EDITOR}" /etc/pacman.d/mirrorlist ;;
+esac
 
 #backup just in case
 cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
@@ -73,6 +80,7 @@ pacman -U https://www.archlinux.org/packages/core/x86_64/pacman/download/ https:
 #Do it again, because conf gets resetted
 sed -i '/SyncFirst/d' /etc/pacman.conf
 
+#Checks if you have UEFI. Seriously who doesn't?
 if [ -d /sys/firmware/efi ]; then
 	#Deletes the Manjaro UEFI entry. Very dangerous operation if misused, but I tested this multiple times and it was good.
 	efibootmgr -b "$(efibootmgr | grep Manjaro | sed 's/*//' | cut -f 1 -d' ' | sed 's/Boot//')" -B
@@ -109,8 +117,12 @@ sed -i '/manjaro/c\Arch' /etc/hosts
 sed -i '/Manjaro/c\Arch' /etc/hosts
 
 #linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
-pacman -S linux-lts linux-lts-headers --noconfirm
-
+printf "\n==>Choose your kernel.\n==>1 for linux-lts(more stable), 2 for the normal kernel."
+read -n 1 number && echo ${number} >/tmp/choice
+case "$(cat /tmp/choice)" in
+	"2") pacman -S linux linux-headers --noconfirm ;;
+	*) pacman -S linux-lts linux-lts-headers --noconfirm ;;
+esac
 
 #Fück you nvidia
 if [ "$(lspci | grep -i nvidia)" ]; then
