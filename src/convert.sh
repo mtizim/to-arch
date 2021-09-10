@@ -174,3 +174,10 @@ fi
 if [ "$(systemctl list-unit-files | grep enabled | grep sddm)" ]; then
 	printf "You seem to run SDDM.\nMake sure you change the SDDM theme to something else like breeze because the default theme looks horrible!"
 fi
+
+
+printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
+read reboot
+if [ "${reboot}" == "y" ]; then
+	reboot
+fi
