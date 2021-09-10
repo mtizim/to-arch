@@ -39,7 +39,7 @@ p_w_d="$(directory)"
 cd /etc/pacman.d
 rm mirrorlist
 #Get mirrorlist
-curl -o mirrorlist -sL 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4'
+curl -o mirrorlist -sL 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6'
 
 if [ -f /etc/pacman.d/mirrorlist.pacnew ]; then
 	rm /etc/pacman.d/mirrorlist.pacnew

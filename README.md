@@ -1,6 +1,6 @@
 ## NOTE: Manjaro Sway Community edition doesn't work with this script!(It's _not_ a Wayland issue, scroll down for more info)
 
-# Manjaro to Arch conversion script(IPv4)
+# Manjaro to Arch conversion script
 
 This is a script to convert a Manjaro installation to an Arch installation with a single command.<br>The original version is [this gist](https://gist.github.com/mariuszkurek/bff8a821076f5406b15fe9be528957b6/) which did work but wasn't seamless, and this script follows the GPLv2 license in the original script.<br>Personally I wanted to use the MIT or BSD-2 clause license.
 
@@ -10,7 +10,7 @@ A few months ago, I was using Manjaro just because I liked the green theme, and 
 
 ## How this script works
 
-The main difference of pure Arch and Manjaro is that they use different mirrors. Manjaro uses slightly old versions of a package for testing, so changing it to Arch mirrors is the first step.<br>Then the script deletes Manjaro-specific packages and Pacman configurations, and enables the multilib repository if it's commented out.<br>After that, the script performs a `pacman -Syyuu` so that the packages are updated and installs an Arch kernel.<br>Finally GRUB is updated to have Arch's theme and the distributor name is changed to `Arch`.<br>Finally DE-specific operations are performed to give a better polished result.
+The main difference of pure Arch and Manjaro is that they use different mirrors. Manjaro uses slightly old versions of a package for testing, so changing it to Arch mirrors is the first step.<br>Then the script deletes Manjaro-specific packages and Pacman configurations, and enables the multilib repository if it's commented out.<br>After that, the script performs a `pacman -Syyuu` so that the packages are updated and installs an Arch kernel.<br>Finally GRUB is updated to have Arch's theme and the distributor name is changed to `Arch` by installing `lsb-release` from the Arch Linux website.<br>Finally DE-specific operations are performed to give a better polished result.
 
 ## Unsupported Editions
 
@@ -26,10 +26,6 @@ The screen goes gray after rebooting after running this script.<br>As far as I h
 
 - [x] Ask reboot after run
 
-- [ ] Check if IPv4 or IPv6
-
-- [ ] Manjaro Sway community edition support
-
 - [x] Ask which kernel version is to be installed
 
-
+- [ ] Manjaro Sway community edition support
