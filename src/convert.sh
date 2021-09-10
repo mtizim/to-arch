@@ -187,8 +187,4 @@ if [ "$(systemctl list-unit-files | grep enabled | grep sddm)" ]; then
 fi
 
 
-printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
-read reboot
-if [ "${reboot}" == "y" ]; then
-	reboot
-fi
+
