@@ -4,7 +4,7 @@ if [ "$(pacman -Qq | grep screenfetch)" ]; then
 	printf "This is you current distro state.\n"
 else
 	pacman -Sy screenfetch --noconfirm
-	screenfetch
+    screenfetch
 	printf "This is your current distro state.\n"
 fi
 pacman -Syy
@@ -94,16 +94,6 @@ pacman -U https://www.archlinux.org/packages/core/x86_64/pacman/download/ https:
 sed -i '/SyncFirst/d' /etc/pacman.conf
 
 if [ -d /sys/firmware/efi ]; then
-SyntaxError: Unexpected token else. what is wrong with my code?
-what is wrong with this code? pls help.
-
-if (yourName.length>0 && gender.length >0); { if (gender ===”male”||gender===”female”) { result = “Thanks”; } else { result = “Please enter male or female for gender.”; } } else { result = “Please tell us both your name and gender.”; }
-
-SyntaxError: Unexpected token else
-
-Answer 50aa6266db2df2c0d8006d0f
-6 votes
-Permalink
 	#Deletes the Manjaro UEFI entry. Very dangerous operation if misused, but I tested this multiple times and it was good.
 	efibootmgr -b "$(efibootmgr | grep Manjaro | sed 's/*//' | cut -f 1 -d' ' | sed 's/Boot//')" -B
 fi
