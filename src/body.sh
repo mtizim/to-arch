@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 #some env stuff for more support
 # https://www.gnu.org/licenses/old-licenses/gpl-2.0.html, from mariuszkurek/convert.sh
-#I personally wanted to use the MIT or BSD-2 clause to not get sued, but the original one uses gpl2
 
 __PRESCRIPT__
 
