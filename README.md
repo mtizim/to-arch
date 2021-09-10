@@ -34,10 +34,10 @@ The screen goes gray after rebooting after running this script.<br>As far as I h
 
 - [x] Check if UEFI or legacy BIOS
 
-- [x] Choose a different editor other than ${EDITOR}
+- [ ] Choose a different editor other than ${EDITOR}
 
 - [x] Ask reboot after run
 
-- [x] Ask which kernel version is to be installed
+- [ ] Ask which kernel version is to be installed
 
 - [ ] Manjaro Sway community edition support
