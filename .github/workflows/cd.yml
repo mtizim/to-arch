@@ -5,22 +5,20 @@ on:
     tags:
       - '*'
 jobs:
-	merge:
-		name: Make
-		runs-on: ubuntu-latest
-		steps:
-			- uses: actions/checkout@v2
-			- name: Make script
-				run: make
-			- uses: actions/upload-artifact@v2
-				with:
-					name: script
-					path: ./to_arch
-				if-no-files-found: error
-			- name: Upload the release
-				uses: softprops/action-gh-release@v1
-				with:
-					body_path: body.txt
-					files: to_arch
-				env:
-					GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  merge:
+    name: Make
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v2
+        - name: Make script
+          run: make
+        - uses: actions/upload-artifact@v2
+          with:
+            name: script
+            path: ./to_arch
+        - name: Upload the release
+          uses: softprops/action-gh-release@v1
+          with:
+            files: to_arch
+          env:
+            GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
