@@ -5,6 +5,16 @@ This is a script to convert a Manjaro installation to an Arch installation with 
 
 https://user-images.githubusercontent.com/90227297/132807588-8757a8c6-eea3-47bb-8231-53fbac0a0105.mp4
 
+## Features
+ - [x] Support for all editions except Sway Daily
+ - [x] Nvidia drivers reinstall
+ - [x] Change UEFI boot entried
+ - [x] Change mirrors
+ - [x] Change kernel with Arch's
+ - [x] Change Manjaro stuff in /etc
+ - [x] Purge Manjaro stuff
+ - [x] Change theme to default in KDE Plasma
+
 ## Why did I write this?
 
 A few months ago, I was using Manjaro just because I liked the green theme, and I just wanted to compile [paru](https://github.com/Morganamilo/paru).<br> The `libalpm` library and `pacman`, which recently had a major update at the time, weren't updated in Manjaro's mirrors, but `paru` already had an implementation of the updated versions.<br>I did manage to compile it by switching to an old tag, but it was very inconvenient, and I decided to switch to Arch while preserving my userspace. Online guides of it were wrong in many ways, and I finally found a working _script_ which _did_ work, but was incomplete. I decided to improve it, and the result is this.

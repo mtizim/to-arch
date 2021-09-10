@@ -107,7 +107,7 @@ case "$whatkernel" in
 esac
 
 # Fück you nvidia
-if lspci | grep -iq nvidia; then
+if grepPacmanQuery nvidia; then
 	pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
 	pacman -S nvidia --noconfirm
 fi
@@ -148,9 +148,11 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 	sed -i '/default-user-image/d' /etc/lightdm/lightdm-gtk-greeter.conf
 fi
 
+#Screenfetch takes an eternity to run in VMs. I have no damn idea why.
 neofetch
 printf "Now it's Arch! Enjoy!\n"
 printf "There could be some leftover Manjaro backgrounds and themes/settings(especially lightdm),\nso you might have to tweak your desktop environment a bit.\n"
+
 if grepPacmanQuery deepin-desktop-base; then
 	printf "When you reboot, the theme will be changed to stock white but the font won't,\nso change it to dark again and it'll be fixed..\n"
 	printf "And especially on VMs after login everything will be white.\nBlindly press on the middle of the screen and you'll be logged in.\n"
@@ -160,3 +162,14 @@ if systemctl list-unit-files | grep enabled | grep -q sddm; then
 	printf "You seem to run SDDM.\nMake sure you change the SDDM theme to something else like breeze because the default theme looks horrible!\n"
 fi
 
+if grepPacmanQuery i3; then
+	pacman -S i3status i3blocks --noconfirm
+fi
+
+if grepPacmanQuery gnome; then
+	pacman -Qq | grep gnome-layout-switcher | xargs pacman -Rdd --noconfirm
+fi
+
+if [ -f /etc/arch-release ]; then
+	sed -i '/Manjaro/c\Arch' /etc/arch-release
+fi
