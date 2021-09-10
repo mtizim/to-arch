@@ -59,7 +59,7 @@ if [ "${whateditor}" == "1" ]; then
 	nano /etc/pacman.d/mirrorlist
 elif [ "${whateditor}" == "2" ]; then
 	vim /etc/pacman.d/mirrorlist
-elif [ "${whateditor}" =="3" ]; then
+elif [ "${whateditor}" == "3" ]; then
 	#micro isn't installed in everything
 	if command -v micro
 	then
