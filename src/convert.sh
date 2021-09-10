@@ -45,17 +45,9 @@ fi
 sed -i '/SyncFirst/d' /etc/pacman.conf
 sed -i '/HoldPkg/d' /etc/pacman.conf
 
-printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, 3 for vi, or any other key for your default EDITOR.\n"
-read number
-if [[ $number == 1 ]]; then
-	echo; nano /etc/pacman.d/mirrorlist
-elif [[ $number == 2 ]]; then
-	echo; vim /etc/pacman.d/mirrorlist
-elif [[ $number == 3 ]]; then
-	echo; vi /etc/pacman.d/mirrorlist
-else
-	echo; $EDITOR /etc/pacman.d/mirrorlist 2> /dev/null || echo -e "Error: No default editor has been set or no such command"
-fi
+printf "==> Uncomment mirrors from your country.\n"
+${EDITOR} /etc/pacman.d/mirrorlist
+
 #backup just in case
 cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
 
@@ -117,16 +109,11 @@ sed -i '/manjaro/c\Arch' /etc/hosts
 sed -i '/Manjaro/c\Arch' /etc/hosts
 
 #linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
-printf "What kernel do you want?\nThe LTS kernel tends to be more stable.\nPress 1 for LTS, and 2 for the normal kernel."
-read number
-if [[ $number == 2 ]]; then
-	echo; pacman -S linux linux-headers --noconfirm
-else
-	echo; pacman -S linux linux-headers --noconfirm
-fi
+pacman -S linux linux-headers --noconfirm
+
 
 #Fück you nvidia
-if [ "$(pacman -Qq | grep nvidia)" ]; then
+if [ "$(lspci | grep -i nvidia)" ]; then
 	pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
 	pacman -S nvidia --noconfirm
 fi
