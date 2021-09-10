@@ -1,8 +1,6 @@
 if [ $EUID -eq 0 ]; then
-	if [ "$(pacman -Qq | grep plasma-desktop)" ]; then
-		printf "This script should not be run as root since KDE Plasma stores its settings in the normal userspace.\nPermissions will be eleveted automatically for system-wide tasks."
-		exit 1
-	fi
+	printf "This script should not be run as root.\nPermissions will be eleveted automatically for system-wide tasks."
+	exit 1
 fi
 if [ "$(pacman -Qq | grep sway)" ] || [ "$(echo $XDG_CURRENT_DESKTOP)" == "sway" ]; then
 	printf "You seem to use Sway. This script breaks Sway, and will make it UNUSABLE!\n"
