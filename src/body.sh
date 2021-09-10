@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-#some env stuff for more support
 # https://www.gnu.org/licenses/old-licenses/gpl-2.0.html, from mariuszkurek/convert.sh
 
 __PRESCRIPT__
