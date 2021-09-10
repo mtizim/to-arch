@@ -53,18 +53,12 @@ fi
 sed -i '/SyncFirst/d' /etc/pacman.conf
 sed -i '/HoldPkg/d' /etc/pacman.conf
 
-printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, 3 for micro, or any other key for your default \$EDITOR.\n"
+printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, or any other key for your default \$EDITOR.\n"
 read -n 1 whateditor
 if [ "${whateditor}" == "1" ]; then
 	nano /etc/pacman.d/mirrorlist
 elif [ "${whateditor}" == "2" ]; then
 	vim /etc/pacman.d/mirrorlist
-elif [ "${whateditor}" == "3" ]; then
-	#micro isn't installed in everything
-	if command -v micro ; then
-		micro /etc/pacman.d/mirrorlist
-	else
-		$EDITOR /etc/pacman.d/mirrorlist
 else
 	$EDITOR /etc/pacman.d/mirrorlist
 fi
