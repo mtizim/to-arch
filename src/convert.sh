@@ -81,8 +81,10 @@ pacman -U https://www.archlinux.org/packages/core/x86_64/pacman/download/ https:
 #Do it again, because conf gets resetted
 sed -i '/SyncFirst/d' /etc/pacman.conf
 
-#Deletes the Manjaro UEFI entry. Very dangerous operation if misused, but I tested this multiple times and it was good.
-efibootmgr -b "$(efibootmgr | grep Manjaro | sed 's/*//' | cut -f 1 -d' ' | sed 's/Boot//')" -B
+if [ -d /sys/firmware/efi ]; then
+	#Deletes the Manjaro UEFI entry. Very dangerous operation if misused, but I tested this multiple times and it was good.
+	efibootmgr -b "$(efibootmgr | grep Manjaro | sed 's/*//' | cut -f 1 -d' ' | sed 's/Boot//')" -B
+fi
 
 #Change grub
 sed -i '/GRUB_DISTRIBUTOR="Manjaro"/c\GRUB_DISTRIBUTOR="Arch"' /etc/default/grub
@@ -135,7 +137,9 @@ sed -i '/GRUB_THEME=/c GRUB_THEME="/boot/grub/themes/archlinux/theme.txt"' /etc/
 
 #Generate grub stuff
 grub-mkconfig -o /boot/grub/grub.cfg
-grub-install
+if [ -d /sys/firmware/efi ]; then
+	grub-install
+fi
 
 #Locale fix
 #It scared the daylights out of me when I realized gnome-terminal won't start without this part
