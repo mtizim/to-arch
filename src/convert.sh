@@ -97,14 +97,8 @@ fi
 sed -i '/manjaro/c\Arch' /etc/hosts
 sed -i '/Manjaro/c\Arch' /etc/hosts
 
-# linux-lts is generally more stable (especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
-printf "What kernel do you want?\nThe LTS kernel tends to be more stable.\nPress 1 for LTS, and 2 for the normal kernel. "
-read -rn 1 whatkernel
-
-case "$whatkernel" in
-	"2") pacman -S linux linux-headers --noconfirm ;;
-	*) pacman -S linux-lts linux-lts-headers --noconfirm ;;
-esac
+# linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
+pacman -S linux-lts linux-lts-headers --noconfirm
 
 # Fück you nvidia
 if grepPacmanQuery nvidia; then
@@ -148,7 +142,7 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 	sed -i '/default-user-image/d' /etc/lightdm/lightdm-gtk-greeter.conf
 fi
 
-#Screenfetch takes an eternity to run in VMs. I have no damn idea why.
+# Screenfetch takes an eternity to run in VMs. I have no damn idea why.
 neofetch
 printf "Now it's Arch! Enjoy!\n"
 printf "There could be some leftover Manjaro backgrounds and themes/settings(especially lightdm),\nso you might have to tweak your desktop environment a bit.\n"

@@ -4,7 +4,7 @@ if pacman -Qq | grep -q plasma-desktop; then
 	lookandfeeltool --apply "org.kde.breezedark.desktop" 2>/dev/null
 fi
 
-chsh -s "$(which bash)"
+chsh -s "/bin/bash"
 
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
 read -r reboot
