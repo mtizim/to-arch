@@ -109,7 +109,7 @@ sed -i '/manjaro/c\Arch' /etc/hosts
 sed -i '/Manjaro/c\Arch' /etc/hosts
 
 #linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
-pacman -S linux linux-headers --noconfirm
+pacman -S linux-lts linux-lts-headers --noconfirm
 
 
 #Fück you nvidia
