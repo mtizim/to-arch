@@ -20,18 +20,16 @@ The screen goes gray after rebooting after running this script.<br>As far as I h
 
 ## TODO
 
-- [ ] Check if UEFI or CSM
+- [x] Check if UEFI or legacy BIOS
 
-- [ ] Choose a different editor other than ${EDITOR}
+- [x] Choose a different editor other than ${EDITOR}
 
-- [ ] Ask reboot after run
-
-- [ ] Check if x86_64 or AArch64
+- [x] Ask reboot after run
 
 - [ ] Check if IPv4 or IPv6
 
 - [ ] Manjaro Sway community edition support
 
-- [ ] Ask which kernel version is to be installed
+- [x] Ask which kernel version is to be installed
 
 

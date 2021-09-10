@@ -37,7 +37,7 @@ fi
 p_w_d="$(directory)"
 
 cd /etc/pacman.d
-
+rm mirrorlist
 #Get mirrorlist
 curl -o mirrorlist -sL 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4'
 
@@ -53,10 +53,23 @@ fi
 sed -i '/SyncFirst/d' /etc/pacman.conf
 sed -i '/HoldPkg/d' /etc/pacman.conf
 
-read -p "==> Uncomment mirrors from your country (press any key to continue)"
-#TODO
-#Will implement using different editors other than default
-$EDITOR /etc/pacman.d/mirrorlist
+printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, 3 for micro, or any other key for your default \$EDITOR.\n"
+read -n 1 whateditor
+if [ "${whateditor}" == "1" ]; then
+	nano /etc/pacman.d/mirrorlist
+elif [ "${whateditor}" == "2" ]; then
+	vim /etc/pacman.d/mirrorlist
+elif [ "${whateditor}" =="3" ]; then
+	#micro isn't installed in everything
+	if command -v micro
+	then
+		micro /etc/pacman.d/mirrorlist
+	else
+		$EDITOR /etc/pacman.d/mirrorlist
+else
+	$EDITOR /etc/pacman.d/mirrorlist
+fi
+#backup just in case
 cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
 
 cd "${directory}"
@@ -117,7 +130,15 @@ sed -i '/manjaro/c\Arch' /etc/hosts
 sed -i '/Manjaro/c\Arch' /etc/hosts
 
 #linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
-yes | pacman -S linux-lts linux-lts-headers
+printf "What kernel do you want?\nThe LTS kernel tends to be more stable.\nPress 1 for LTS, and 2 for the normal kernel."
+read -n 1 whatkernel
+if [ "${whatkernel}" == "1" ]; then
+	pacman -S linux-lts linux-lts-headers --noconfirm
+elif [ "${whatkernel}" == "2" ]; then
+	pacman -S linux linux-headers --noconfirm
+else
+	pacman -S linux-lts linux-lts-headers --noconfirm
+fi
 
 #Delete line that hides grub. Manjaro devs, do you think that noobs don't even know how to press enter?
 sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub
