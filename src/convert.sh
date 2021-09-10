@@ -170,7 +170,7 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 	sed -i '/background/d' /etc/lightdm/lightdm-gtk-greeter.conf
 	sed -i '/default-user-image/d' /etc/lightdm/lightdm-gtk-greeter.conf
 fi
-#I like neofetch better than screenfetch since it shows the terminal info, but for your crappy network's sake I used screenfetch as it's preinstalled in many editions
+
 neofetch
 printf "Now it\'s Arch! Enjoy!\n"
 printf "There could be some leftover Manjaro backgrounds and themes/settings(especially lightdm),\nso you might have to tweak your desktop environment a bit.\n"
