@@ -47,13 +47,11 @@ sed -i '/HoldPkg/d' /etc/pacman.conf
 
 printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, or any other key for your default \$EDITOR.\n"
 read -n 1 whateditor
-if [[ $whateditor == 1 ]]; then
-	nano /etc/pacman.d/mirrorlist
-elif [[ $whateditor == 2 ]]; then
-	vim /etc/pacman.d/mirrorlist
-else
-	$EDITOR /etc/pacman.d/mirrorlist
-fi
+case "$whateditor" in
+	"1") nano /etc/pacman.d/mirrorlist ;;
+	"2") vim /etc/pacman.d/mirrorlsit ;;
+	*) $EDITOR /etc/pacman.d/mirrorlist ;;
+esac
 #backup just in case
 cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
 
@@ -116,14 +114,11 @@ sed -i '/Manjaro/c\Arch' /etc/hosts
 
 #linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
 printf "What kernel do you want?\nThe LTS kernel tends to be more stable.\nPress 1 for LTS, and 2 for the normal kernel."
-read -n 1 whatkernel
-if [[ $whatkernel == 1 ]]; then
-	pacman -S linux-lts linux-lts-headers --noconfirm
-elif [[ $whatkernel == 2 ]]; then
-	pacman -S linux linux-headers --noconfirm
-else
-	pacman -S linux-lts linux-lts-headers --noconfirm
-fi
+read -rn 1 whatkernel
+case "$whatkernel" in
+	"2") pacman -S linux linux-headers --noconfirm ;;
+	*) pacman -S linux-lts linux-lts-headers --noconfirm ;;
+esac
 
 #Fück you nvidia
 if [ "$(pacman -Qq | grep nvidia)" ]; then
