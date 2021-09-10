@@ -45,7 +45,7 @@ fi
 sed -i '/SyncFirst/d' /etc/pacman.conf
 sed -i '/HoldPkg/d' /etc/pacman.conf
 
-printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, or any other key for your default \$EDITOR.\n"
+printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, or any other key for your default EDITOR.\n"
 read -n 1 whateditor
 case $whateditor in
 	1) nano /etc/pacman.d/mirrorlist ;;
