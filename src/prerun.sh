@@ -1,8 +1,3 @@
-if [ "$(id -u)" -eq 0 ]; then
-	printf "This script should not be run as root.\nPermissions will be eleveted automatically for system-wide tasks.\n"
-	exit 1
-fi
-
 if pacman -Qq | grep -q sway || pgrep -x sway &>/dev/null || [ "$XDG_CURRENT_DESKTOP" = "sway" ]; then
 	printf "You seem to use Sway. This script breaks Sway, and will make it UNUSABLE!\n"
 	printf "See README for more info. Type \"I agree\" if you know the consequences and want to continue.\n"
