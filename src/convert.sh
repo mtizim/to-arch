@@ -125,6 +125,11 @@ else
 	pacman -S linux-lts linux-lts-headers --noconfirm
 fi
 
+#Fück you nvidia
+if [ "$(lspci | grep -i nvidia)" ]; then
+	pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
+	pacman -S nvidia --noconfirm
+fi
 #Delete line that hides grub. Manjaro devs, do you think that noobs don't even know how to press enter?
 sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub
 
