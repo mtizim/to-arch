@@ -12,7 +12,8 @@ EOF
 
 chmod +x /tmp/convert.sh
 sudo /tmp/convert.sh 2>/dev/null
+rm /tmp/convert.sh
 
 __POSTSCRIPT__
 
-rm /tmp/convert.sh
+
