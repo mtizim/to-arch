@@ -2,7 +2,7 @@
 
 # Manjaro to Arch conversion script
 
-This is a script to convert a Manjaro installation to an Arch installation with a single command.<br>The original version is [this gist](https://gist.github.com/mariuszkurek/bff8a821076f5406b15fe9be528957b6/) which did work but wasn't seamless, and this script follows the GPLv2 license in the original script.<br>Personally I wanted to use the MIT or BSD-2 clause license.
+This is a script to convert a Manjaro installation to an Arch installation with a single command.<br>The original version is [this gist](https://gist.github.com/mariuszkurek/bff8a821076f5406b15fe9be528957b6/) which did work but wasn't seamless, and this script follows the GPLv2 license in the original script.<br>Personally I wanted to use the MIT or BSD 2-clause license.
 
 ## Why did I write this?
 
