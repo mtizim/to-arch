@@ -176,6 +176,7 @@ if [ -f /etc/lightdm/lightdm-gtk-greeter.conf ]; then
 	sed -i '/default-user-image/d' /etc/lightdm/lightdm-gtk-greeter.conf
 fi
 
+#Screenfetch takes an eternity to run in VMs. I have no damn idea why.
 neofetch
 printf "Now it\'s Arch! Enjoy!\n"
 printf "There could be some leftover Manjaro backgrounds and themes/settings(especially lightdm),\nso you might have to tweak your desktop environment a bit.\n"
@@ -190,4 +191,10 @@ if [ "$(pacman -Qq | grep i3)" ]; then
 	pacman -S i3status i3blocks --noconfirm
 fi
 
+if [ "$(pacman -Qq | grep gnome)" ]; then
+	pacman -Qq | grep gnome-layout-switcher | xargs pacman -Rdd --noconfirm
+fi
 
+if [ -f /etc/arch-release ]; then
+	sed -i '/Manjaro/c\Arch' /etc/arch-release
+fi
