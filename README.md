@@ -16,7 +16,7 @@ The main difference of pure Arch and Manjaro is that they use different mirrors.
 
 ### Sway Daily Community edition
 
-The screen goes gray after rebooting after running this script.<br>As far as I have experimented it's definetely not a Wayland issue, it's an issue in Sway. Please DO NOT USE THIS IF YOU'RE ON SWAY!
+The screen goes gray after rebooting after running this script.<br>As far as I have experimented it's definetely not a Wayland issue, it's an issue in Sway, probably because Manjaro configs are all deleted. Please DO NOT USE THIS IF YOU'RE ON SWAY!
 
 ## TODO
 
