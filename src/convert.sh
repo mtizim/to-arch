@@ -45,15 +45,9 @@ fi
 sed -i '/SyncFirst/d' /etc/pacman.conf
 sed -i '/HoldPkg/d' /etc/pacman.conf
 
-printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, 3 for vi, or anything else for your default editor.\n"
-#end of file enclosure read error workaround
-read -n 1 number && echo ${number} >/tmp/choice
-case "$(cat /tmp/choice)" in
-	"1") nano /etc/pacman.d/mirrorlist ;;
-	"2") vim /etc/pacman.d/mirrorlist ;;
-	"3") vi /etc/pacman.d/mirrorlist ;;
-	*) "${EDITOR}" /etc/pacman.d/mirrorlist ;;
-esac
+printf "==> Uncomment mirrors from your country.\nPress any key to continue.\n"
+read -n 1 number
+nano /etc/pacman.d/mirrorlist
 
 #backup just in case
 cp /etc/pacman.d/mirrorlist /tmp/mirrorlist
@@ -117,16 +111,13 @@ sed -i '/manjaro/c\Arch' /etc/hosts
 sed -i '/Manjaro/c\Arch' /etc/hosts
 
 #linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
-printf "\n==>Choose your kernel.\n==>1 for linux-lts(more stable), 2 for the normal kernel."
-read -n 1 number && echo ${number} >/tmp/choice
-case "$(cat /tmp/choice)" in
-	"2") pacman -S linux linux-headers --noconfirm ;;
-	*) pacman -S linux-lts linux-lts-headers --noconfirm ;;
-esac
+# If you have read this line and think stock linux is better, change the -lts.
+pacman -S linux-lts linux-lts-headers --noconfirm
+
 
 #Fück you nvidia
+pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
 if [ "$(lspci | grep -i nvidia)" ]; then
-	pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
 	pacman -S nvidia --noconfirm
 fi
 #Delete line that hides grub. Manjaro devs, do you think that noobs don't even know how to press enter?
