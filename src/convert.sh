@@ -115,7 +115,11 @@ esac
 # Fück you nvidia
 pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
 if [ "$(lspci | grep -i nvidia)" ]; then
-	pacman -S nvidia --noconfirm
+	if [ "$(pacman -Qq | grep linux-lts)" ]; then
+		pacman -S nvidia-lts --noconfirm
+	else
+		pacman -S nvidia --noconfirm
+	fi
 fi
 
 # Delete line that hides GRUB. Manjaro devs, do you think that noobs don't even know how to press enter?
