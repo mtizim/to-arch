@@ -8,8 +8,10 @@ if pacman -Qq | grep -q sway; then
 	workdir="$(pwd)"
 	rm -rf ~/.config/sway
 	mkdir ~/.config/sway
+	cd ~/.config/sway
 	curl -o config -fLs https://raw.githubusercontent.com/swaywm/sway/master/config.in
 	sed -i '/alacritty/c\foot' ~/.config/sway/config
+	sed -i '/Wallpaper/d' ~/.config/sway/config
 	sudo pacman -S dmenu --noconfirm
 	cd "${workdir}"
 fi
