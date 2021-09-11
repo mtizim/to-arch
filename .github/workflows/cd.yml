@@ -17,7 +17,7 @@ jobs:
             name: script
             path: ./to_arch
         - name: Release body
-          run: printf "Please chmod after download\nLook at README for more info about features." > body.txt
+          run: printf "Please chmod after download\nLook at README for more info about features." > body.txt;$version = ${Env:GITHUB_REF}.Replace("refs/tags/","");echo "![downloads](https://img.shields.io/github/downloads/sugkiy/ManjarotoArch/${version}/total?style=flat-square)" >> body.txt
         - name: Upload the release
           uses: softprops/action-gh-release@v1
           with:
