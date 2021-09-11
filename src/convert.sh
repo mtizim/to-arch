@@ -80,6 +80,19 @@ sed -ie 's/#\(\[multilib\]\)/\1/;/\[multilib\]/,/^$/{//!s/^#//;}' /etc/pacman.co
 
 # Prevent HoldPkg error
 sed -i '/HoldPkg/d' /etc/pacman.conf
+
+#Sway configuration backup
+#Sway edition seems to have its configs on /etc and that gets deleted when purging Manjaro software
+#I decided a backup is the best way to avoid this, even though Manjaro settings will persist
+if grepPacmanQuery sway; then
+	[ -d /tmp/skel ] && rm -rf /tmp/skel
+	[ -d /tmp/sway ] && rm -rf /tmp/sway
+	[ -d /tmp/usrsharesway ] && rm -rf /tmp/usrsharesway
+	cp -r /etc/skel /tmp/skel
+	cp -r /etc/sway /tmp/sway
+	cp -r /usr/share/sway /tmp/usrsharesway
+fi
+
 # Purge Manjaro's software
 pacman -Qq | grep manjaro | xargs pacman -Rdd --noconfirm
 # KDE Plasma
@@ -156,7 +169,7 @@ fi
 # Screenfetch takes an eternity to run in VMs. I have no damn idea why.
 neofetch
 printf "Now it's Arch! Enjoy!\n"
-printf "There could be some leftover Manjaro backgrounds and themes/settings(especially lightdm),\nso you might have to tweak your desktop environment a bit.\n"
+printf "There could be some leftover Manjaro backgrounds and themes/settings(especially lightdm, i3, Sway, etc),\nso you might have to tweak your desktop environment a bit.\n"
 
 if grepPacmanQuery deepin-desktop-base; then
 	printf "When you reboot, the theme will be changed to stock white but the font won't,\nso change it to dark again and it'll be fixed..\n"
@@ -173,6 +186,12 @@ fi
 
 if grepPacmanQuery gnome; then
 	pacman -Qq | grep gnome-layout-switcher | xargs pacman -Rdd --noconfirm
+fi
+
+if grepPacmanQuery sway; then
+	\mv -f /tmp/sway /etc/sway
+	\mv -f /tmp/skel /etc/skel
+	\mv -f /tmp/usrsharesway /usr/share/sway
 fi
 
 if [ -f /etc/arch-release ]; then
