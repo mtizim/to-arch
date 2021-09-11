@@ -93,7 +93,7 @@ pacman -Qq | grep 'linux[0-9]' | xargs pacman -Rdd --noconfirm
 pacman -Syyuu bash --noconfirm
 
 # As Linus Torvalds said
-pacman -Qq | grep mhwd | xargs pacman -Rdd --noconfirm
+pacman -Qq | grep mhwd | xargs pacman -Rdd --noconfirm 2>/dev/null
 
 # Change computer's name if it's manjaro
 if [ -f /etc/hostname ]; then
