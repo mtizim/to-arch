@@ -144,8 +144,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 locale-gen
 
 
-# Deletes Manjaro-Sway repo
-grepPacmanQuery sway && sed -ie '/[manjaro-sway]/,+2d' /etc/pacman.conf
 
 # Greeter bg remove (Doesn't really work idk why)
 if [ -f /etc/lightdm/unity-greeter.conf ]; then
