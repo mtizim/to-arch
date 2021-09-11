@@ -37,12 +37,13 @@ removeIfMatched manjaro-keyring
 	sed -i '/HoldPkg/d' /etc/pacman.conf
 	
 	# Use $VISUAL instead?
-	printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, 3 for vi, or any other key for your default \$EDITOR.\n"
+	printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, 3 for vi, 4 for micro, or any other key for your default \$EDITOR.\n"
 	read -rn 1 whateditor
 	case "$whateditor" in
 		"1") nano /etc/pacman.d/mirrorlist ;;
-		"2") vim /etc/pacman.d/mirrorlist ;;
+		"2") pacman -S vim --noconfirm;vim /etc/pacman.d/mirrorlist ;;
 		"3") vi /etc/pacman.d/mirrorlist ;;
+		"4") pacman -S micro --noconfirm;micro /etc/pacman.d/mirrorlist ;;
 		*) $EDITOR /etc/pacman.d/mirrorlist ;;
 	esac
 	
