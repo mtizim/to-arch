@@ -89,6 +89,11 @@ pacman -Qq | grep breath | xargs pacman -Rdd --noconfirm
 # This should be in front of -Syu to avoid manjaro's linux kernel from updating
 pacman -Qq | grep 'linux[0-9]' | xargs pacman -Rdd --noconfirm
 
+#Manjaro SwayWM edition
+if [ "$(cat /etc/pacman.conf | grep '\[manjaro-sway\]')" ]; then
+	sudo sed -ie '/\[manjaro-sway\]/,+2d' /etc/pacman.conf
+fi
+
 # -Syyyyyyyyyyuuuuuuuu calms me down
 pacman -Syyuu bash --noconfirm
 
