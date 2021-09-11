@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# https://www.gnu.org/licenses/old-licenses/gpl-2.0.html, from mariuszkurek/convert.sh
+# From mariuszkurek/convert.sh
 # $1 - Phase
 
 if [ "$(id -u)" -eq 0 ] && [ "$1" -ne 2 ]; then
