@@ -29,7 +29,10 @@ removeIfMatched manjaro-keyring
 	rm mirrorlist
 	# Get mirrorlist
 	curl -o mirrorlist -sL 'https://archlinux.org/mirrorlist/?country=all&protocol=http&protocol=https&ip_version=4&ip_version=6'
-
+	
+	#Korean Anigil mirror sucks
+	sed -i '/anigil/d' /etc/pacman.d/mirrorlist
+	
 	[ -f /etc/pacman.d/mirrorlist.pacnew ] && rm /etc/pacman.d/mirrorlist.pacnew
 	[ -f /etc/pacman.conf.pacnew ] && rm /etc/pacman.conf.pacnew
 	
