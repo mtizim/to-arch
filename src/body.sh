@@ -12,7 +12,7 @@ fi
 if [ -z "$1" ]; then
 	"$0" 1
 	sudo "$0" 2 2>/dev/null
-	"$0" 3 2>/dev/null
+	"$0" 3
 elif [ "$1" -eq 1 ]; then
 ## Phase 1
 __PRESCRIPT__
