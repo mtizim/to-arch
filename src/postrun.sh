@@ -17,7 +17,7 @@ if pacman -Qq | grep -q sway; then
 	echo "clear;exec bash" >> ~/.zshrc
 fi
 if pacman -Qq | grep -q i3; then
-	sed -i '/nitrogen/d' ~/.i3/config
+	sed -i '/nitrogen/d' ~/.i3/config 2>/dev/null
 fi
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
 read -r reboot
