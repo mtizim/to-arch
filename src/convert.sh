@@ -187,6 +187,9 @@ if grepPacmanQuery gnome; then
 	pacman -Qq | grep gnome-layout-switcher | xargs pacman -Rdd --noconfirm
 fi
 
+if grepPacmanQuery sway; then
+	pacman -S dmenu --noconfirm
+fi
 
 if [ -f /etc/arch-release ]; then
 	sed -i '/Manjaro/c\Arch' /etc/arch-release
