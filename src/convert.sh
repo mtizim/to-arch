@@ -106,14 +106,14 @@ sed -i '/Manjaro/c\Arch' /etc/hosts
 
 # linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
 printf "What kernel? Press 1 for linux-lts(more stable), 2 for normal linux.\n"
-read -rn 1 whateditor
-case "$whateditor" in
+read -rn 1 whatkernel
+case "$whatkernel" in
         "2") pacman -S linux linux-headers --noconfirm ;;
         *) pacman -S linux-lts linux-lts-headers --noconfirm ;;
 esac
 
 # Fück you nvidia
-pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
+pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm 2>/dev/null
 if [ "$(lspci | grep -i nvidia)" ]; then
 	if [ "$(pacman -Qq | grep linux-lts)" ]; then
 		pacman -S nvidia-lts --noconfirm
