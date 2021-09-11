@@ -12,7 +12,7 @@ removeIfMatched() { # $1 - Pattern
 # Temporary directory to store all our stuff in
 tmp_dir="$(mktemp -d)"
 
-pacman -Syy neofetch --noconfirm
+pacman -Syy neofetch micro vim--noconfirm
 neofetch
 printf "This is your current distro state.\n"
 
@@ -22,6 +22,7 @@ removeIfMatched matray
 removeIfMatched manjaro-release
 removeIfMatched bashrc-manjaro
 removeIfMatched manjaro-keyring
+
 
 (
 	cd /etc/pacman.d
@@ -41,9 +42,9 @@ removeIfMatched manjaro-keyring
 	read -rn 1 whateditor
 	case "$whateditor" in
 		"1") nano /etc/pacman.d/mirrorlist ;;
-		"2") pacman -S vim --noconfirm;vim /etc/pacman.d/mirrorlist ;;
+		"2") vim /etc/pacman.d/mirrorlist ;;
 		"3") vi /etc/pacman.d/mirrorlist ;;
-		"4") pacman -S micro --noconfirm;micro /etc/pacman.d/mirrorlist ;;
+		"4") micro /etc/pacman.d/mirrorlist ;;
 		*) $EDITOR /etc/pacman.d/mirrorlist ;;
 	esac
 	
