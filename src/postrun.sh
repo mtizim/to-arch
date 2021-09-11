@@ -10,6 +10,8 @@ if pacman -Qq | grep -q sway; then
 	rm -rf ~/.config/sway
 	mkdir ~/.config/sway
 	curl -o config -fLs https://raw.githubusercontent.com/swaywm/sway/master/config.in
+	sudo pacman -S alacritty
+	sed -i '/alacritty/c\foot' ~/.config/sway/config
 	cd "${workdir}"
 fi
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
