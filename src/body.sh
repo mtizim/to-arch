@@ -3,7 +3,7 @@
 # $1 - Phase
 
 if [ "$(id -u)" == "0" ] && [ "$1" != "2" ]; then
-	printf "This script should not be run as root.\nPermissions will be eleveted automatically for system-wide tasks.\n"
+	printf "This script should not be run as root.\nPermissions will be elevated automatically for system-wide tasks.\n"
 	exit 1
 fi
 [ $? == 1 ] && exit 1;
