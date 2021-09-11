@@ -12,7 +12,9 @@ removeIfMatched() { # $1 - Pattern
 # Temporary directory to store all our stuff in
 tmp_dir="$(mktemp -d)"
 
-
+pacman -Syy neofetch --noconfirm
+neofetch
+printf "This is your current distro state.\n"
 
 grepPacmanQuery pamac && pacman -Qq | grep pamac | xargs pacman -Rdd --noconfirm
 grepPacmanQuery manjaro-application-utility && pacman -Rcnsdd manjaro-application-utility
@@ -61,7 +63,8 @@ pacman -U https://www.archlinux.org/packages/core/x86_64/pacman/download/ https:
 # Do it again, because conf gets reset
 sed -i '/SyncFirst/d' /etc/pacman.conf
 
-
+# Deletes the Manjaro UEFI entry. Very dangerous operation if misused, but I tested this multiple times and it was good.
+[ -d /sys/firmware/efi ] && efibootmgr -b "$(efibootmgr | grep Manjaro | sed 's/*//' | cut -f 1 -d' ' | cut -c5-)" -B
 
 # Change grub
 sed -i '/GRUB_DISTRIBUTOR="Manjaro"/c\GRUB_DISTRIBUTOR="Arch"' /etc/default/grub
@@ -94,7 +97,12 @@ fi
 sed -i '/manjaro/c\Arch' /etc/hosts
 sed -i '/Manjaro/c\Arch' /etc/hosts
 
+# linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
+pacman -S linux-lts linux-lts-headers --noconfirm
 
+# Fück you nvidia
+if grepPacmanQuery nvidia; then
+	pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
 	pacman -S nvidia --noconfirm
 fi
 

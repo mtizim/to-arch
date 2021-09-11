@@ -8,7 +8,7 @@ https://user-images.githubusercontent.com/90227297/132807588-8757a8c6-eea3-47bb-
 ## Features
  - [x] Support for all editions except Sway Daily
  - [x] Nvidia drivers reinstall
- - [x] Change UEFI boot entries
+ - [x] Change UEFI boot entried
  - [x] Change mirrors
  - [x] Change kernel with Arch's
  - [x] Change Manjaro stuff in /etc
