@@ -9,7 +9,6 @@ if pacman -Qq | grep -q sway || pgrep -x sway &>/dev/null || [ "$XDG_CURRENT_DES
 		printf "You disagreed.\n"
 		exit 1
 	fi
-	[ $? == 1 ] && exit 1;
 fi
 [ $? == 1 ] && exit 1;
 
