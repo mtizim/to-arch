@@ -4,6 +4,7 @@
 
 if [ "$(id -u)" -eq 0 ] && [ "$1" -ne 2 ]; then
 	printf "This script should not be run as root.\nPermissions will be eleveted automatically for system-wide tasks.\n"
+	break
 	exit 1
 fi
 
