@@ -37,11 +37,12 @@ removeIfMatched manjaro-keyring
 	sed -i '/HoldPkg/d' /etc/pacman.conf
 	
 	# Use $VISUAL instead?
-	printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, or any other key for your default \$EDITOR.\n"
+	printf "==> Uncomment mirrors from your country.\nPress 1 for Nano, 2 for vim, 3 for vi, or any other key for your default \$EDITOR.\n"
 	read -rn 1 whateditor
 	case "$whateditor" in
 		"1") nano /etc/pacman.d/mirrorlist ;;
-		"2") vim /etc/pacman.d/mirrorlsit ;;
+		"2") vim /etc/pacman.d/mirrorlist ;;
+		"3") vi /etc/pacman.d/mirrorlist ;;
 		*) $EDITOR /etc/pacman.d/mirrorlist ;;
 	esac
 	
@@ -98,11 +99,16 @@ sed -i '/manjaro/c\Arch' /etc/hosts
 sed -i '/Manjaro/c\Arch' /etc/hosts
 
 # linux-lts is generally more stable(especially for intel graphics, uhd620 seems to have a black screen issue since 5.11)
-pacman -S linux-lts linux-lts-headers --noconfirm
+printf "What kernel? Press 1 for linux-lts(more stable), 2 for normal linux.\n"
+read -rn 1 whateditor
+case "$whateditor" in
+        "2") pacman -S linux linux-headers --noconfirm ;;
+        *) pacman -S linux-lts linux-lts-headers --noconfirm ;;
+esac
 
 # Fück you nvidia
-if grepPacmanQuery nvidia; then
-	pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
+pacman -Qq | grep nvidia | xargs pacman -Rdd --noconfirm
+if [ "$(lspci | grep -i nvidia)" ]; then
 	pacman -S nvidia --noconfirm
 fi
 
