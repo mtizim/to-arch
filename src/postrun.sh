@@ -14,6 +14,7 @@ if pacman -Qq | grep -q sway; then
 	sed -i '/Wallpaper/d' ~/.config/sway/config
 	sudo pacman -S dmenu --noconfirm
 	cd "${workdir}"
+	echo "clear;exec bash" >> ~/.zshrc
 fi
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
 read -r reboot
