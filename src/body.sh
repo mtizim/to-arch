@@ -6,6 +6,7 @@ if [ "$(id -u)" == "0" ] && [ "$1" != "2" ]; then
 	printf "This script should not be run as root.\nPermissions will be elevated automatically for system-wide tasks.\n"
 	exit 1
 fi
+# Bash pipes commands parallelly on sync, so this exits every pipe running in the shell.
 [ $? == 1 ] && exit 1;
 
 if [ -z "$1" ]; then
