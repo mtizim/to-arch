@@ -6,7 +6,11 @@ fi
 
 chsh -s "/bin/bash"
 if pacman -Qq | grep -q sway; then
+	workdir="$(pwd)"
 	rm -rf ~/.config/sway
+	mkdir ~/.config/sway
+	curl -o config -fLs https://raw.githubusercontent.com/swaywm/sway/master/config.in
+	cd "${workdir}"
 fi
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
 read -r reboot
