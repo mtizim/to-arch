@@ -10,9 +10,9 @@ fi
 [ $? == 1 ] && exit 1;
 
 if [ -z "$1" ]; then
-	"$0" 1
-	sudo "$0" 2
-	"$0" 3
+	"$0" 1 2>/dev/null
+	sudo "$0" 2 2>/dev/null
+	"$0" 3 2>/dev/null
 elif [ "$1" -eq 1 ]; then
 ## Phase 1
 __PRESCRIPT__
