@@ -174,6 +174,10 @@ fi
 
 if grepPacmanQuery i3; then
 	pacman -S i3status i3blocks --noconfirm
+	if [ -f /etc/lightdm/slick-greeter.conf ]; then
+		sed -i '/background/d' /etc/lightdm/slick-greeter.conf
+		sed -i '/default-user-image/d' /etc/lightdm/slick-greeter.conf
+	fi
 fi
 
 if grepPacmanQuery gnome; then
