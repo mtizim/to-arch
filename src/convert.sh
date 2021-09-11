@@ -17,7 +17,7 @@ neofetch
 printf "This is your current distro state.\n"
 
 grepPacmanQuery pamac && pacman -Qq | grep pamac | xargs pacman -Rdd --noconfirm
-grepPacmanQuery manjaro-application-utility && pacman -Rcnsdd manjaro-application-utility
+grepPacmanQuery manjaro-application-utility && pacman -Rcnsdd manjaro-application-utility --noconfirm
 removeIfMatched matray
 removeIfMatched manjaro-release
 removeIfMatched bashrc-manjaro
