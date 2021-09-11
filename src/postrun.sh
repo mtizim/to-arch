@@ -3,7 +3,9 @@ if pacman -Qq | grep -q plasma-desktop; then
 	/usr/lib/plasma-changeicons breeze-dark 2>/dev/null
 	lookandfeeltool --apply "org.kde.breezedark.desktop" 2>/dev/null
 fi
-
+if pacman -Qq | grep -q zsh; then
+	yes | uninstall_oh_my_zsh
+fi
 chsh -s "/bin/bash"
 if pacman -Qq | grep -q sway; then
 	workdir="$(pwd)"
