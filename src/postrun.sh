@@ -5,7 +5,9 @@ if pacman -Qq | grep -q plasma-desktop; then
 fi
 
 chsh -s "/bin/bash"
-
+if pacman -Qq | grep -q sway; then
+	rm -rf ~/.config/sway
+fi
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
 read -r reboot
 # If we're already using Bash (#!/usr/bin/env bash), why not make use of its neat features
