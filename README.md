@@ -25,12 +25,6 @@ A few months ago, I was using Manjaro just because I liked the green theme, and 
 
 The main difference of pure Arch and Manjaro is that they use different mirrors. Manjaro uses slightly old versions of a package for testing, so changing it to Arch mirrors is the first step.<br>Then the script deletes Manjaro-specific packages and Pacman configurations, and enables the multilib repository if it's commented out.<br>After that, the script performs a `pacman -Syyuu` so that the packages are updated and installs an Arch kernel.<br>Finally GRUB is updated to have Arch's theme and the distributor name is changed to `Arch` by installing `lsb-release` from the Arch Linux website.<br>Finally DE-specific operations are performed to give a better polished result.
 
-## Unsupported Editions
-
-### Sway Daily Community edition
-
-The screen goes gray after rebooting after running this script.<br>As far as I have experimented it's definetely not a Wayland issue, it's an issue in Sway, probably because Manjaro configs are all deleted. Please DO NOT USE THIS IF YOU'RE ON SWAY!
-
 ## TODO
 
 - [x] Check if UEFI or legacy BIOS
@@ -41,4 +35,4 @@ The screen goes gray after rebooting after running this script.<br>As far as I h
 
 - [x] Ask which kernel version is to be installed
 
-- [ ] Manjaro Sway community edition support
+- [x] Manjaro Sway community edition support
