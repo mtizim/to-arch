@@ -12,7 +12,7 @@ removeIfMatched() { # $1 - Pattern
 # Temporary directory to store all our stuff in
 tmp_dir="$(mktemp -d)"
 
-pacman -Syy neofetch micro vim--noconfirm
+pacman -Syy neofetch micro vim --noconfirm
 neofetch
 printf "This is your current distro state.\n"
 
