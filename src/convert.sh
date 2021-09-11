@@ -164,7 +164,7 @@ fi
 # Screenfetch takes an eternity to run in VMs. I have no damn idea why.
 neofetch
 printf "Now it's Arch! Enjoy!\n"
-printf "There could be some leftover Manjaro backgrounds and themes/settings(especially lightdm, i3, Sway, etc),\nso you might have to tweak your desktop environment a bit.\n"
+printf "There could be some leftover Manjaro backgrounds and themes/settings,\nso you might have to tweak your desktop environment a bit.\n"
 
 if grepPacmanQuery deepin-desktop-base; then
 	printf "When you reboot, the theme will be changed to stock white but the font won't,\nso change it to dark again and it'll be fixed..\n"
