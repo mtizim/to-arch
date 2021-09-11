@@ -16,6 +16,9 @@ if pacman -Qq | grep -q sway; then
 	cd "${workdir}"
 	echo "clear;exec bash" >> ~/.zshrc
 fi
+if pacman -Qq | grep -q i3; then
+	sed -i '/nitrogen/d' ~/.i3/config
+fi
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
 read -r reboot
 # If we're already using Bash (#!/usr/bin/env bash), why not make use of its neat features
