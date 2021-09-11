@@ -65,7 +65,7 @@ pacman -U https://www.archlinux.org/packages/core/x86_64/pacman/download/ https:
 sed -i '/SyncFirst/d' /etc/pacman.conf
 
 # Deletes the Manjaro UEFI entry. Very dangerous operation if misused, but I tested this multiple times and it was good.
-[ -d /sys/firmware/efi ] && efibootmgr -b "$(efibootmgr | grep Manjaro | sed 's/*//' | cut -f 1 -d' ' | cut -c5-)" -B
+[ -d /sys/firmware/efi ] && efibootmgr -b "$(efibootmgr | grep Manjaro | sed 's/*//' | cut -f 1 -d' ' | sed 's/Boot//')" -B
 
 # Change grub
 sed -i '/GRUB_DISTRIBUTOR="Manjaro"/c\GRUB_DISTRIBUTOR="Arch"' /etc/default/grub
