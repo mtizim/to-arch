@@ -1,6 +1,6 @@
 # Manjaro to Arch conversion script
 ![](https://img.shields.io/github/downloads/sugkiy/manjarotoarch/total)<br>
-This is a script to convert a Manjaro installation to an Arch installation with a single command for users who want a fuss-free conversion from Manjaro to Arch.<br>The original version is [this gist](https://gist.github.com/mariuszkurek/bff8a821076f5406b15fe9be528957b6/) which _did_ work but wasn't _seamless_.<br>This script followed the GPLv2 license in the original script until v0.3.0.<br>[@YTG1234](https://github.com/YTG1234)'s PR purged the original script's source, so this script is now licensed under BSD-2.
+This is a script to convert a Manjaro installation to an Arch installation with a single command for users who want a fuss-free conversion from Manjaro to Arch.<br>The original version is [this gist](https://gist.github.com/mariuszkurek/bff8a821076f5406b15fe9be528957b6/) which _did_ work but wasn't _seamless_.<br>
 
 ## Showcase(7x speedup)
 
@@ -8,7 +8,7 @@ https://user-images.githubusercontent.com/90227297/132807588-8757a8c6-eea3-47bb-
 
 ## Features
  - [x] Support for all editions
- - [x] Nvidia drivers reinstall
+ - [x] Nvidia drivers reinstall if lspci shows nvidia
  - [x] Change UEFI boot entries
  - [x] Change mirrors
  - [x] Change kernel with Arch's
