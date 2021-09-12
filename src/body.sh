@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# From mariuszkurek/convert.sh
+# Inspired by mariuszkurek/convert.sh
 # $1 - Phase
 
 if [ "$(id -u)" == "0" ] && [ "$1" != "2" ]; then
