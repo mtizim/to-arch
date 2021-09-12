@@ -7,7 +7,7 @@ This is a script to convert a Manjaro installation to an Arch installation with 
 https://user-images.githubusercontent.com/90227297/132807588-8757a8c6-eea3-47bb-8231-53fbac0a0105.mp4
 
 ## Features
- - [x] Support for all editions except Sway Daily
+ - [x] Support for all editions
  - [x] Nvidia drivers reinstall
  - [x] Change UEFI boot entries
  - [x] Change mirrors
