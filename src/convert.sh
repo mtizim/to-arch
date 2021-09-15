@@ -195,3 +195,5 @@ fi
 if [ -f /etc/arch-release ]; then
 	sed -i '/Manjaro/c\Arch' /etc/arch-release
 fi
+
+[ -d /boot/efi/EFI/Manjaro ] && rm -rf /boot/efi/EFI/Manjaro
