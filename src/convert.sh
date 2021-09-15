@@ -196,4 +196,5 @@ if [ -f /etc/arch-release ]; then
 	sed -i '/Manjaro/c\Arch' /etc/arch-release
 fi
 
+# Deletes leftover shit from Manjaro UEFI boot entry
 [ -d /boot/efi/EFI/Manjaro ] && rm -rf /boot/efi/EFI/Manjaro
