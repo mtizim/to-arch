@@ -25,7 +25,14 @@ pacman -Syy neofetch micro vim --noconfirm
 neofetch
 printf "This is your current distro state.\n"
 
-grepPacmanQuery pamac && pacman -Qq | grep pamac | xargs pacman -Rdd --noconfirm
+if grepPacmanQuery pamac; then
+	printf "\nDo you want to remove pamac?(Y/n)\n"
+	read -rn 1 a
+	case "$a" in
+		[Yy]*) pacman -Qq | grep pamac | xargs pacman -Rdd --noconfirm ;;
+		*) printf "Leaving pamac alone.\n" ;;
+	esac
+fi
 grepPacmanQuery manjaro-application-utility && pacman -Rcnsdd manjaro-application-utility --noconfirm
 removeIfMatched matray
 removeIfMatched manjaro-release
