@@ -1,7 +1,7 @@
 # Bail out if LUKS user.
 # For god's sake people why do you use LUKS. The NSA does not have enough free time to spy on you and try to decrypt your whole disk.
 # A screen password is completely OK for PC uses. The FBI won't try to rip off your hard disk unless you're some kind of unabomber.
-if [ $(sudo fdisk -l 2>/dev/null | grep -i luks) ]; then
+if [ "$(sudo fdisk -l 2>/dev/null | grep -i luks)" ]; then
 	printf "You seem to use LUKS. This script breaks LUKS. Please don\'t use this.\n"
 	exit 1
 fi
