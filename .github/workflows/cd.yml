@@ -17,7 +17,7 @@ jobs:
             name: script
             path: ./to_arch
         - name: Release body
-          run: printf "Please chmod after download\nLook at README for more info about features.\nPlease don't use this if you use LUKS." > body.txt
+          run: printf "Please chmod after download\nLook at README for more info about features.\nPlease don't use this if you use LUKS.\nRun\n```bash\nchmod 777 to_arch\n./to_arch\n```to run.\nOther running methods won\'t work." > body.txt
         - name: Upload the release
           uses: softprops/action-gh-release@v1
           with:
