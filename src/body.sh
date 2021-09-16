@@ -18,12 +18,12 @@ if [ -z "$1" ]; then
 	sudo "$0" 2 2>/dev/null
 	"$0" 3
 elif [ "$1" -eq 1 ]; then
-## Phase 1
+## Phase 1, user-wide jobs. Precaution notice, nothing else fancy for now.
 __PRESCRIPT__
 elif [ "$1" -eq 2 ]; then
-## Phase 2
+## Phase 2, system-wide jobs. The core part, this breaks and you system gets borked.
 __CONVERTSCRIPT__
 elif [ "$1" -eq 3 ]; then
-## Phase 3
+## Phase 3, user-wide jobs. Some important cleanup jobs, especially for sway. Makes script more seamless.
 __POSTSCRIPT__
 fi
