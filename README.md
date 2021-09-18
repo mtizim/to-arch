@@ -1,7 +1,7 @@
 # Manjaro to Arch conversion script
 ## Stay away if you use LUKS!
 <!--![](https://img.shields.io/github/downloads/sugkiy/manjarotoarch/total)<br>-->
-This is a script to convert a Manjaro installation to an Arch installation with a single command for users who want a fuss-free conversion from Manjaro to Arch.<br>This script is inspired by [this gist](https://gist.github.com/mariuszkurek/bff8a821076f5406b15fe9be528957b6/) which _did_ work but wasn't _seamless_.<br>
+This is a script to convert a Manjaro installation to an Arch installation with a single command for users who want a fuss-free conversion from Manjaro to Arch because of the old ABIs in the stable branch that don't match up with the AUR or ArchISO doesn't want to add a boot entry or the unstable branch doens't have servers near them.<br>This script is inspired by [this gist](https://gist.github.com/mariuszkurek/bff8a821076f5406b15fe9be528957b6/) which _did_ work but wasn't _seamless_.<br>
 Run this on the same directory as where `to_arch` exists.
 ```shell
 chmod 777 to_arch
