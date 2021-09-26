@@ -145,7 +145,7 @@ if [ "$(lspci | grep -i nvidia)" ]; then
 	fi
 fi
 
-# Some wallpaper removal. I have no idea what edition it is.
+# Some wallpaper removal. I heard that it's in budgie and xfce editions.
 grepPacmanQuery illyria-wallpaper && pacman -Rdd illyria-wallpaper --noconfirm
 
 # Delete line that hides GRUB. Manjaro devs, do you think that noobs don't even know how to press enter?
