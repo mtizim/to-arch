@@ -73,10 +73,11 @@ removeIfMatched manjaro-keyring
 )
 
 # I have seen pacui and bmenu in some editions as a dependency
-# I have go goddamn idea why this shows up in cat
 grepPacmanQuery pacui && pacman -Qq | grep pacui | xargs pacman -Rdd --noconfirm
 pacman -Qq pacui &>/dev/null && pacman -Qq | grep pacui | xargs pacman -Rdd --noconfirm
 pacman -Qq bmenu &>/dev/null && pacman -Qq | grep bmenu | xargs pacman -Rdd --noconfirm
+
+# Manjaro uses a different mirrorlist package toidentify from the Arch one.
 pacman -Qq pacman-mirrors &>/dev/null && pacman -Qq | grep pacman-mirrors | xargs pacman -Rdd --noconfirm
 
 # Get pacman, mirrorlist and lsb_release from website, not mirrors
@@ -143,6 +144,9 @@ if [ "$(lspci | grep -i nvidia)" ]; then
 		pacman -S nvidia --noconfirm
 	fi
 fi
+
+# Some wallpaper removal. I have no idea what edition it is.
+grepPacmanQuery illyria-wallpaper && pacman -Rdd illyria-wallpaper --noconfirm
 
 # Delete line that hides GRUB. Manjaro devs, do you think that noobs don't even know how to press enter?
 sed -i '/GRUB_TIMEOUT_STYLE=hidden/d' /etc/default/grub
