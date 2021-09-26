@@ -24,6 +24,10 @@ fi
 if pacman -Qq | grep -q i3; then
 	sed -i '/nitrogen/d' ~/.i3/config 2>/dev/null
 fi
+# There lurks a disgusting application residue in you ~/.config...
+# The dreaded name of the package is matray, and it literally sprays your screen with Manjaro news and ads.
+# It is seen in the KDE edition.
+[ -d $HOME/.config/matray ] && rm -rf ~/.config/matray
 # Reboot if you want.
 printf "Would you like to reboot? Make sure you have read the above carefully! (y/N)"
 read -r reboot
