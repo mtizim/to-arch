@@ -27,3 +27,4 @@ elif [ "$1" -eq 3 ]; then
 ## Phase 3, user-wide jobs. Some important cleanup jobs, especially for sway. Makes script more seamless.
 __POSTSCRIPT__
 fi
+[ $? != 0 ] && exit 0;
