@@ -1,3 +1,4 @@
+# I, (mtizim) am not the author of this, please don't ask me for support unless you have a PR
 # Manjaro to Arch conversion script
 ## Stay away if you use LUKS!
 <!--![](https://img.shields.io/github/downloads/sugkiy/manjarotoarch/total)<br>-->
